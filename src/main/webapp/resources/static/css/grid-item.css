@@ -1,0 +1,93 @@
+.thumbnail img{
+	width: 60%;
+	height: 40%;
+	
+}
+
+
+.btn-block .btn-des p{
+	
+	
+	display: inline-block;
+    width: 100px;
+	float: right;
+	
+
+}
+.thumbnail .vender {
+	float: right;
+    right: 0px;
+    width: 80px;
+    height: 20px;
+    margin-right: -12px;
+    top: -2px;
+   
+	
+}
+
+.thumbnail .btn-div p{
+	
+	display:inline-block;
+	
+	
+}
+
+.caption .title-des p{
+	font-size : 12px;
+	margin-top:8px;
+	height:30px;
+}
+.thumbnail .caption{
+	width:100%;
+}
+.btn-div button{
+	color: #dc1e1e;
+	background-color: rgba(255,255,255,.15);
+    border-radius: 5px;
+	
+}
+
+
+.glyphicon .glyphicon-heart-empty :hover{
+	background-color:red;
+}
+
+
+.title-des h4{
+	color:red;
+}
+
+.btn-div {
+	width: 100%;
+	margin-top:5px;
+	color: black;
+	clear: both;
+	text-align: center;
+
+}
+
+
+
+.thumbnail:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.thumbnail:hover .btn-div > button{
+	background-color: rgba(252, 48, 44, 0.78);;
+	color: white;
+	border:1px solid white;
+}
+
+.page-header{
+	border: 0px;
+}
+.buy{
+
+	text-align:center;
+}
+.buy .btn-primary{
+	width:100%;
+}
+.thumbnail:hover .buy button {
+    background-color: #3c763d;
+}

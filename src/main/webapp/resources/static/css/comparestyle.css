@@ -1,0 +1,69 @@
+@CHARSET "ISO-8859-1";
+
+.compareheader{
+	background-color: #039ef4;
+    color: white;
+    margin-top: 0px;
+    text-align: center;
+    height: 37px;
+    padding-top: 11px;
+}
+.nonepadding{
+	padding: 3px;
+    border: 1px solid #9E9E9E;
+    margin-left: 14px;
+    width: 32%;
+}
+.searchbox{
+	height: 30px;
+    margin-left: -10px;
+    padding: 20px;
+    margin-left: 5px;
+    width: 33%;
+}
+
+
+.btnsearch{
+	background: none;
+    margin-left: -34px;
+    height: 28px;
+    border: none;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+ 
+}
+.src{
+	 padding: 25px;
+    padding-top: 7px;
+}
+.col-sm-12 > h2{
+	margin-top: 15px;
+    text-align: center;
+    font-family: arail;
+    color: #007abf;
+    font-size: 29px;
+    text-decoration: underline;
+    font-family:"Kh Battambang";
+}
+div.desc {
+    padding: 15px;
+    text-align: left;
+    float:left;
+    padding-left: 50px;
+}
+.red{
+	color:red;
+}
+.source{
+	width: 150px;
+    padding: 5px;
+}
+h1,h2,h3,h4,h5,h6{
+	 font-family:"Kh Battambang";
+}
+html,body{
+	background-color: #fff;
+}
