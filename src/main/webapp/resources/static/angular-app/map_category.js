@@ -154,11 +154,12 @@ app.controller('mapCategoryController', function($scope, $http){
 	 * Add Product after map to the rigth category
 	 */
 	$scope.addProductByMapOne = function(){
+		alert(2);
 		conf = confirm("Are you sure this product have been mapped to the right category?");
 		if(conf)
 		{
 			for(var i = 0; i < $scope.listProducts.length; i++){
-				$scope.listProducts[i] = {
+				/*$scope.listProducts[i] = {
 											ID 			: $scope.listProducts[i].ID,
 											PRODUCT_TYPE_ID: {
 												ID		: $scope.getProductTypeid
@@ -176,10 +177,35 @@ app.controller('mapCategoryController', function($scope, $http){
 											{
 												ID		: $scope.productObject.SOURCE.ID
 											}
-										};
+										};*/
+				$scope.listProducts[i] = {
+						ID 			: $scope.listProducts[i].ID,
+						PRODUCT_TYPE_ID: {
+							ID		: $scope.getProductTypeid
+						},
+						CATEGORY	:
+						{
+							ID		: $scope.getSubTwoID
+						}
+					};
+				
 			}
 			
 			$http({
+				method:'POST',
+				url:URL_API + '/product-temperory/create-product',
+				data: $scope.listProducts,
+				headers:{'Authorization': 'Basic ZGV2OiFAI2FwaQ=='}
+			}).then(function(response){
+				alert("success");
+				$scope.getTemProductBySourceId($scope.sourceid);
+			},function(response){
+				console.log(response);
+			});
+			
+			
+			
+			/*$http({
 				method:'POST',
 				data: $scope.listProducts,
 				url:URL_API+'product/',
@@ -187,21 +213,11 @@ app.controller('mapCategoryController', function($scope, $http){
 			}).then(function(response){
 				alert("success");
 				$scope.getTemProductBySourceId($scope.sourceid);
-				/*$http({
-					method:'PUT',
-					data: $scope.listProducts,
-					url:URL_API+'product-temperory/update-by-source-id',
-					headers:{'Authorization': 'Basic ZGV2OiFAI2FwaQ=='}
-				}).then(function(res){
-					console.log("success update products");
-					for(var i = 0; i < $scope.listProducts.length; i++){
-						var index = $scope.getTemProduct.indexOf($scope.listProducts[i]);
-		 			 	$scope.getTemProduct.splice(index, 1);
-					}
-				});*/
 			},function(response){
 				console.log(response);
-			});
+			});*/
+			
+			
 		}
 		
 	}
@@ -211,6 +227,7 @@ app.controller('mapCategoryController', function($scope, $http){
 	 */
 	$scope.addDataToProduct = function(list)
 	{
+		alert(1);
 		var conf = confirm("Are you sure, you had checked out of the products which not match in the right category?");
 		if(conf)
 		{
