@@ -21,7 +21,7 @@
 						ng-model="rowSelected" 
 						ng-change="limitChange(rowSelected)" 
 					    data-ng-options="row.id as row.value for row in rows">
-					    <option value="">ITEMS PER ROW</option>
+					    <option value="">ITEMS PER PAGE</option>
 				</select>
 			</div>
 			<div class="col-sm-4" style="margin-top:20px; padding-left:0px !important">
@@ -33,7 +33,8 @@
 				</select>
 			</div>
 			
-			<div class="col-sm-2" style="margin-top:10px; padding-left:0px !important">
+			<div class="col-sm-2" style="margin-top:20px; padding-left:0px !important">
+				<input class="form-control" type="text" placeholder="Search by title..." ng-keyup="searchByTitle($event)" ng-model="filter.title">
 			</div>
 			<div class="col-sm-4">
 				<div id="PAGINATION" class="pull-right"></div>
@@ -52,7 +53,11 @@
 			        <th>Action</th>
 			      </tr>
 			    </thead>
-			    <tbody>
+			    <tbody id="noProduct" ng-show="isNoProduct">
+			    	<tr><td colspan="6">No product to map anymore!!!</td></tr>
+			    </tbody>
+			    
+			    <tbody id="products" ng-show="!isNoProduct">
 			      <tr ng-repeat="p in products">
 			        <td><a href="{{p.URL}}" target="_blank"><img ng-src="{{p.IMAGE}}" width="100px" height="100px"></a></td>
 			        <td ng-bind="p.TITLE"></td>
@@ -82,7 +87,7 @@
 		<div class="col-sm-12">
 			<div class="col-sm-5"></div>
 			<div class="col-sm-2">
-				<button style="width:100%;margin-bottom:20px;" ng-click="publishAllPost()" id="btnSaveAll" class="btn btn-primary pull-right"><i title="Publish" class="fa fa-save" aria-hidden="true"></i> <span> SAVE ALL</span></button>
+				<button ng-show="!isNoProduct" style="width:100%;margin-bottom:20px;" ng-click="publishAllPost()" id="btnSaveAll" class="btn btn-primary pull-right"><i title="Publish" class="fa fa-save" aria-hidden="true"></i> <span> SAVE ALL</span></button>
 			</div>
 			<div class="col-sm-5"></div>
 		</div>
@@ -91,10 +96,11 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script> 
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.bootpag.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/angular-app/map_category2.js"></script>
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/pages/page-layout/admin-layout/footer.jsp"></jsp:include>
+
+<script src="${pageContext.request.contextPath}/resources/static/js/loadingoverlay.min.js"></script> 
 	
 

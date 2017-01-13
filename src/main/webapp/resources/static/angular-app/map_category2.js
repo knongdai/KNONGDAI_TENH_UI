@@ -4,7 +4,9 @@
  */
 var app = angular.module('mapApp', []);
 app.controller('mapCtrl', function($scope, $http){
-
+	
+	$scope.isNoProduct = false;
+	
 	var DASHBOARD_MAP = {};
 	var PRODUCT = {};
 	var CATEGORY = {};
@@ -16,11 +18,11 @@ app.controller('mapCtrl', function($scope, $http){
 	
 	//TODO: 
 	var $PAGINATION = $('#PAGINATION');
-
+	
 	// TODO: Default filter
 	$scope.filter = {
 		page: 1, 
-		limit: 2, 
+		limit: 5, 
 		categoryId: null,
 		title: null
 	};
@@ -34,6 +36,7 @@ app.controller('mapCtrl', function($scope, $http){
 	
 	//TODO:
 	DASHBOARD_MAP.findAll = function(){
+		$.LoadingOverlay("show");
 		$http({
 			url: URL_API + '/v1/tenh/temp/dashboard',
 			method: 'GET',
@@ -43,19 +46,23 @@ app.controller('mapCtrl', function($scope, $http){
 			console.log(success);
 			$scope.categories = success.data.categories;
 			if(success.data.data.length == 0){
-				$('button#btnSaveAll').css('display', 'none');
-				$('tbody').html('<tr><td colspan="6">No product to map anymore!!!</td></tr>');
+				$scope.isNoProduct = true;
+			}else{
+				$scope.isNoProduct = false;
+				$scope.products = success.data.data;
+				$scope.productTypes = success.data.productTypes;
+				PRODUCT.loadPagination(success.data);
 			}
-			$scope.products = success.data.data;
-			$scope.productTypes = success.data.productTypes;
-			PRODUCT.loadPagination(success.data);			
+			$.LoadingOverlay("hide");
 		}, function(error){
 			console.log(error);
+			$.LoadingOverlay("show");
 		});
 	};
 	
 	//TODO: Define method for load all records
 	PRODUCT.findAllTemp = function(){
+		$.LoadingOverlay("show");
 		$http({
 			url: URL_API + '/v1/tenh/temp',
 			method: 'GET',
@@ -64,20 +71,22 @@ app.controller('mapCtrl', function($scope, $http){
 		}).then(function(success){			
 			console.log(success);
 			if(success.data.data.length == 0){
-				$('button#btnSaveAll').css('display', 'none');
-				$('tbody').html('<tr><td colspan="6">No product to map anymore!!!</td></tr>');
+				$scope.isNoProduct = true;
+			}else{
+				$scope.isNoProduct = false;
+				$scope.products = success.data.data;
+				PRODUCT.loadPagination(success.data);
 			}
-			
-			$scope.products = success.data.data;
-			PRODUCT.loadPagination(success.data);
-			
+			$.LoadingOverlay("hide");
 		}, function(error){
 			console.log(error);
+			$.LoadingOverlay("hide");
 		});
 	};
 	
 	//TODO: 
 	PRODUCT.publishAll = function(products){
+		$.LoadingOverlay("show");
 		$http({
 			url: URL_API + '/v1/tenh/temp',
 			method: 'PUT',
@@ -90,9 +99,10 @@ app.controller('mapCtrl', function($scope, $http){
 		}).then(function(success){
 			console.log(success);
 			PRODUCT.findAllTemp();
-			
+			$.LoadingOverlay("hide");
 		},function(error){
 			console.log(error);
+			$.LoadingOverlay("hide");
 		});
 	};
 	
@@ -175,6 +185,17 @@ app.controller('mapCtrl', function($scope, $http){
 	$scope.limitChange = function(limit){
 		$scope.filter.limit = limit;
 		PRODUCT.findAllTemp();
+	};
+	
+	$scope.searchByTitle = function(event){
+		if(event.keyCode == 13){
+			PRODUCT.findAllTemp();
+		}
+		if(event.keyCode == 8){
+			if($scope.filter.title == '' || $scope.filter.title == null)
+				PRODUCT.findAllTemp();
+		}
+		console.log($scope.filter);
 	};
 	
 	//TODO:

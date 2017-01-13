@@ -47,67 +47,8 @@
 			class="logo"> <span class="logo-mini"><b>A</b>LT</span> <span
 			class="logo-lg"><b>Tos Tenh</b></span>
 		</a> <nav class="navbar navbar-static-top">
-		<!-- <ul class="dropdown list-unstyled msg_list">
-			<li role="presentation" class="dropdown pull-left">
-				<a href="javascript:;" class="dropdown-toggle info-number pull-left"
-					data-toggle="dropdown" aria-expanded="false"
-					style="color: white; margin-top: 15px;"> 
-					<i class="fa fa-envelope-o fa-2x"></i> 
-					<span class="badge bg-green">1</span>
-				</a> 
-				
-				<ul id="menu1" class="dropdown-menu list-unstyled msg_list " role="menu">
-					<li class="pull-left">
-						<a> 
-							<span> 
-								<span>khbuy.com</span> 
-								<span class="time">3 mins ago</span>
-							</span> 
-							<span class="message"> have been changed structure...! </span>
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul> -->
+	
 		<div class="navbar-custom-menu">
-			<%-- <ul class="nav navbar-nav">
-				<li class="dropdown user user-menu"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <img
-						src="${pageContext.request.contextPath}/resources/static/images/avatar3.png" class="user-image"
-						alt="User Image"> <span class="hidden-xs">Admin</span>
-				</a>
-					<ul class="dropdown-menu">
-						<li class="user-header"><img
-							src="resources/static/images/avatar3.png" class="img-circle"
-							alt="User Image">
-							<p>
-								Admin <small>Member since Nov. 2012</small>
-							</p></li>
-						<li class="user-body">
-							<div class="row">
-								<div class="col-xs-4 text-center">
-									<a href="#">Followers</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Sales</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Friends</a>
-								</div>
-							</div>
-						</li>
-						<li class="user-footer">
-							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Profile</a>
-							</div>
-							<div class="pull-right">
-								<a href="${pageContext.request.contextPath}/logout?success" class="btn btn-default btn-flat">Sign out</a>
-							</div>
-						</li>
-					</ul></li>
-				<li><a href="#" data-toggle="control-sidebar"><i
-						class="fa fa-gears"></i></a></li>
-			</ul> --%>
 		</div>
 		</nav> 
 		</header>
@@ -198,7 +139,12 @@
 							Mapping Category
 						</a>
 					</li>
-					
+					<li>
+						<a href="${pageContext.request.contextPath}/admin/mapcategory2">
+							<i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+							Mapping Products
+						</a>
+					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/admin/testscrap">
 							<i class="fa fa-refresh" aria-hidden="true"></i>
