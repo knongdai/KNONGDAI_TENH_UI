@@ -155,7 +155,7 @@ app.controller('mapCtrl', function($scope, $http){
 	
 	$scope.publishPost = function(PID){
 		console.log(PID);
-		var product = {};
+		productUpdate = [];
 		for(var i=0; i<$scope.products.length; i++){
 			if($scope.products[i].ID == PID ){
 				if($scope.products[i].CATEGORY.ID == null || $scope.products[i].PRODUCT_TYPE_ID == null){
@@ -171,12 +171,17 @@ app.controller('mapCtrl', function($scope, $http){
 	
 	$scope.publishAllPost = function(){
 		console.log($scope.products);
-		
+		productsUpdate = [];
 		angular.forEach($scope.products, function(product){
 			if(product.CATEGORY.ID != null && product.PRODUCT_TYPE_ID != null){
 				productsUpdate.push(product);
 			}
 		});
+		
+		if(productsUpdate.length == 0){
+			alert('Please choose at least one product to map!');
+			return;
+		}
 		
 		if(confirm("Are you sure to publish these products?"))
 			PRODUCT.publishAll(productsUpdate);

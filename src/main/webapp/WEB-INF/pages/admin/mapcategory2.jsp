@@ -59,7 +59,7 @@
 			    
 			    <tbody id="products" ng-show="!isNoProduct">
 			      <tr ng-repeat="p in products">
-			        <td><a href="{{p.URL}}" target="_blank"><img ng-src="{{p.IMAGE}}" width="100px" height="100px"></a></td>
+			        <td><a href="{{p.URL}}" target="_blank"><img class="thumbnail" data-zoom-image="{{p.IMAGE}}" ng-src="{{p.IMAGE}}" width="100px" height="100px"></a></td>
 			        <td ng-bind="p.TITLE"></td>
 			        <td ng-bind="p.PRICE | currency:$:2"></td>
 			        <td><select class="form-control" 
@@ -96,11 +96,13 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.bootpag.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/angular-app/map_category2.js"></script>
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/pages/page-layout/admin-layout/footer.jsp"></jsp:include>
 
+<script src="${pageContext.request.contextPath}/resources/static/js/jquery.elevateZoom.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/loadingoverlay.min.js"></script> 
 	
 

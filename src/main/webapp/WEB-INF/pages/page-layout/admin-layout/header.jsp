@@ -146,6 +146,12 @@
 						</a>
 					</li>
 					<li>
+						<a href="${pageContext.request.contextPath}/admin/product-type">
+							<i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+							Product Types
+						</a>
+					</li>
+					<li>
 						<a href="${pageContext.request.contextPath}/admin/testscrap">
 							<i class="fa fa-refresh" aria-hidden="true"></i>
 							Test Scrap Data

@@ -160,6 +160,14 @@ public class AdminController {
 		m.addAttribute("title", "Admin >> Mapping-Category");
 		return "admin/mapcategory2";
 	}
+	
+	@RequestMapping(value="/product-type", method = RequestMethod.GET)
+	public String productType(ModelMap m)
+	{
+		m.addAttribute("title", "Admin >> Product Type");
+		return "admin/productType";
+	}
+	
 	/**
 	 * Request test scrapping page
 	 * @param m
