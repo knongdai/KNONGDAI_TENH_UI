@@ -13,5 +13,5 @@ public class CustomizationBean implements EmbeddedServletContainerCustomizer {
   public void customize(ConfigurableEmbeddedServletContainer container) {
     container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404"));
   }
-
+  
 }

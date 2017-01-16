@@ -202,7 +202,6 @@ app.controller('mapCtrl', function($scope, $http){
 		}
 		console.log($scope.filter);
 	};
-	
 	//TODO:
 	DASHBOARD_MAP.findAll();
 });

@@ -28,7 +28,7 @@
 				<select class="form-control" 
 						ng-model="categorySelected" 
 						ng-change="categoryChange(categorySelected)" 
-					    data-ng-options="category.ID as category.SUB_CATEGORY for category in categories">
+					    data-ng-options="category.ID as category.MAIN_CATEGORY.SUB_CATEGORY + ' > ' + category.SUB_CATEGORY for category in categories">
 					    <option value="">ALL CATEGORIES</option>
 				</select>
 			</div>
@@ -65,11 +65,11 @@
 			        <td><select class="form-control" 
 								ng-model="updateCategorySeleted" 
 								ng-change="udateCategoryChange(updateCategorySeleted, p.ID)" 
-						    	data-ng-options="category.ID as category.SUB_CATEGORY for category in categories">
-					    	<option ng-value="{{p.CATEGORY.ID}}" ng-bind="p.CATEGORY.SUB_CATEGORY"></option>
+						    	data-ng-options="category.ID as category.MAIN_CATEGORY.SUB_CATEGORY + ' > ' + category.SUB_CATEGORY for category in categories">
+					    	<option ng-value="{{p.CATEGORY.ID}}" ng-bind="p.MAIN_CATEGORY.SUB_CATEGORY + ' > ' + p.CATEGORY.SUB_CATEGORY"></option>
 						</select>
 					</td>
-			        <td><select class="form-control" 
+			        <td><select class="form-control"
 								ng-model="productTypeSeleted" 
 								ng-change="productTypeChange(productTypeSeleted, p.ID)" 
 						    	data-ng-options="productType.ID as productType.PRODUCT_TYPE for productType in productTypes">
@@ -94,7 +94,6 @@
 		<div style="clear:both;"></div>
 	</aside>
 </div>
-
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.bootpag.min.js"></script>
@@ -104,5 +103,6 @@
 
 <script src="${pageContext.request.contextPath}/resources/static/js/jquery.elevateZoom.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/static/js/loadingoverlay.min.js"></script> 
-	
+
+
 
